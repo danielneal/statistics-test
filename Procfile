@@ -1,1 +1,2 @@
-web: java -cp target/riverford-statistics.jar clojure.main -m riverford-statistics.server
+web: java $JVM_OPTS -cp target/riverford-statistics-standalone.jar clojure.main -m riverford-statistics.server
+

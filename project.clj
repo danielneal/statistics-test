@@ -6,7 +6,9 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [ring "1.8.1"]
                  [riverford/objection "0.1.1"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [environ "0.5.0"]]
   :repl-options {:init-ns riverford-statistics.server}
   :min-lein-version "2.0.0"
-  :uberjar-name "riverford-statistics")
+  :uberjar-name "riverford-statistics-standalone.jar"
+  :profiles {:production {:env {:production true}}})

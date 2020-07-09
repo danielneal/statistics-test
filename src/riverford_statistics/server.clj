@@ -6,7 +6,9 @@
    [ring.util.response :as resp]
    [ring.middleware.params :refer [wrap-params]]
    [ring.middleware.multipart-params :refer [wrap-multipart-params]]
-   [hiccup.core :refer [html]]))
+   [hiccup.core :refer [html]]
+   [environ.core :refer [env]])
+)
 
 (def index
   (html
@@ -52,13 +54,11 @@
   [port]
   (-> (jetty/run-jetty #'app {:port port :join? false})
     (obj/register
-      { ;; all optional
-       :name (str "Jetty Server on port " port)
+      {:name (str "Jetty Server on port " port)
        :alias [:jetty-server port]
        :data {:handler #'app :port port}
-       ;; optional, but wise!
        :stopfn (fn [server] (.stop server))})))
 
 (defn -main
-  [& args]
-  (start-server 8080))
+  [& [port]]
+  (start-server (Integer. (or port (env :port) 5000))))
