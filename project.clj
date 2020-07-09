@@ -8,4 +8,5 @@
                  [riverford/objection "0.1.1"]
                  [hiccup "1.0.5"]]
   :repl-options {:init-ns riverford-statistics.server}
+  :min-lein-version "2.0.0"
   :uberjar-name "riverford-statistics")
