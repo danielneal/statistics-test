@@ -34,8 +34,10 @@
     (if (odd? (count numbers))
       (nth sorted-numbers (/ (count numbers) 2))
       (let [midpoint (bigdec (/ (count numbers) 2))
-            upper (nth sorted-numbers (java.lang.Math/ceil midpoint))
-            lower (dec upper)]
+            above-midpoint (java.lang.Math/ceil midpoint)
+            below-midpoint (dec above-midpoint)
+            upper (nth sorted-numbers above-midpoint)
+            lower (nth sorted-numbers below-midpoint)]
         (bigdec (/ (+ lower upper) 2))))))
 
 (defn mode
