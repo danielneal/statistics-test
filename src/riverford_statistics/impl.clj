@@ -4,7 +4,7 @@
 (defn whitespace-delimited-word-count
   "Takes a text string and returns the whitespace delimited word count"
   [text]
-  (let [words (string/split text #"\s")]
+  (let [words (string/split text #"\s+")]
     (count words)))
 
 (defn line-count
