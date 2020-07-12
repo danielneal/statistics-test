@@ -7,8 +7,7 @@
    [ring.middleware.params :refer [wrap-params]]
    [ring.middleware.multipart-params :refer [wrap-multipart-params]]
    [hiccup.core :refer [html]]
-   [environ.core :refer [env]])
-)
+   [environ.core :refer [env]]))
 
 (def index
   (html
@@ -39,11 +38,14 @@
   [req]
   (case (:uri req)
     "/upload" {:status 200
-               :body (upload req)}
+               :body (upload req)
+               :headers {"Content-Type" "text/html"}}
     "/" {:status 200
-         :body index}
+         :body index
+         :headers {"Content-Type" "text/html"}}
     {:status 404
-     :body "Page not found"}))
+     :body "Page not found"
+     :headers {"Content-Type" "text/plain"}}))
 
 (def app
   (-> router
