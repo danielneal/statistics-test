@@ -21,9 +21,9 @@
     letters-per-word))
 
 (defn mean
-  "Returns the mean of the numbers"
+  "Returns the mean of the numbers, to 1 decimal place"
   [numbers]
-  (with-precision 5 (bigdec (/ (reduce + numbers) (count numbers)))))
+  (.setScale (with-precision 5 (bigdec (/ (reduce + numbers) (count numbers)))) 1 BigDecimal/ROUND_HALF_UP))
 
 (defn median
   "Returns the median of the numbers - note that the case for an even number
